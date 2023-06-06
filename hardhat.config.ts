@@ -18,6 +18,16 @@ const config: HardhatUserConfig = {
       accounts: [PRIVATE_KEY],
       chainId: 11155111,
     },
+    localhost: {
+      url: "http://localhost:8545",
+      chainId: 31337,
+    },
+    ganache: {
+      url: "HTTP://127.0.0.1:7545",
+      accounts: [
+        "0xa41c0ad8c8ddf69d809ef69b8d58e3ec197318dad1a75f91e988be55ec41291a",
+      ],
+    },
   },
   etherscan: {
     apiKey: ETHERSCAN_KEY,
