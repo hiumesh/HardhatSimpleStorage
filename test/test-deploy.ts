@@ -12,7 +12,7 @@ describe("SimpleStorage", function () {
   });
 
   it("Should start with a favorite number of 0", async function () {
-    await simpleStorage?.deployTransaction.wait(2);
+    await simpleStorage?.deployTransaction.wait(1);
     const currentValue = await simpleStorage?.retrieve();
     const expectedValue = "0";
 

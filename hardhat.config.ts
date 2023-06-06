@@ -1,5 +1,6 @@
 import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
+import "hardhat-gas-reporter";
 import dotenv from "dotenv";
 
 import "./task/block-number";
@@ -9,6 +10,7 @@ dotenv.config();
 const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL;
 const PRIVATE_KEY = process.env.PRIVATE_KEY as string;
 const ETHERSCAN_KEY = process.env.ETHERSCAN_KEY as string;
+const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY as string;
 
 const config: HardhatUserConfig = {
   solidity: "0.8.18",
@@ -24,13 +26,17 @@ const config: HardhatUserConfig = {
     },
     ganache: {
       url: "HTTP://127.0.0.1:7545",
-      accounts: [
-        "0xa41c0ad8c8ddf69d809ef69b8d58e3ec197318dad1a75f91e988be55ec41291a",
-      ],
     },
   },
   etherscan: {
     apiKey: ETHERSCAN_KEY,
+  },
+  gasReporter: {
+    enabled: true,
+    currency: "USD",
+    outputFile: "gas-report.txt",
+    noColors: true,
+    coinmarketcap: COINMARKETCAP_API_KEY,
   },
 };
 
